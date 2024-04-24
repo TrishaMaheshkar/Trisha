@@ -1,0 +1,20 @@
+graph=[(1,2),(2,3),(3,4),(4,5),(1,3),(2,4),(3,5)]
+vertexset=set()
+adj_mat=[]
+for edge in graph:
+    print(edge)
+    vertexset.add(edge[0])
+    vertexset.add(edge[1])
+nv=len(vertexset)
+ne=len(graph)
+print("vertices:",nv)
+incidence_mat=[[0]*ne for i in range(nv)]
+for row in incidence_mat:
+    print(row)
+for i,edge in enumerate(graph):
+    incidence_mat[edge[0]-1][i]=1
+    incidence_mat[edge[1]-1][i]=1
+print("Incidence matrix")
+for row in incidence_mat:
+    print(row)
+

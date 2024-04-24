@@ -1,0 +1,38 @@
+class node:
+    def __init__(self,data):
+        self.lc=None
+        self.rc=None
+        self.hd=0
+        self.data=data
+def level_order(root):
+    level_map={}
+    q=[(root,0)]
+    while q:
+        node,level=q.pop(0)
+        if level not in level_map:
+            level_map[level]=[]
+        level_map[level].append(node.data)
+        if node.lc:
+            q.append((node.lc,level+1))
+        if node.rc:
+            q.append((node.rc,level+1))
+    print("\n levelorder:")
+    for level in level_map:
+        print(level,":",level_map[level])
+    print("\n leftview")
+    for level in level_map:
+        print(level_map[level][0],end=",")
+    print("\n rightview")
+    for level in level_map:
+        print(level_map[level][-1],end=",")
+        
+root=node(1)
+root.lc=node(2)
+root.rc=node(3)
+root.lc.lc=node(4)
+root.lc.rc=node(5)
+root.rc.rc=node(6)
+root.rc.lc=node(7)
+root.lc.rc.lc=node(8)
+root.rc.lc.rc=node(9)
+level_order(root)
